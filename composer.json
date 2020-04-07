@@ -1,0 +1,28 @@
+{
+    "name": "enzaime/payment",
+    "description": "Online payment",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mahbub Rabbani",
+            "email": "mahbub.rucse@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Enzaime\\Payment\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enzaime\\Payment\\ServiceProvider"
+            ],
+            "aliases": {
+                "EnzPayment": "Enzaime\\Payment\\PaymentFacade"
+            }
+        }
+    }
+}
