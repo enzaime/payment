@@ -2,7 +2,7 @@
 
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'api',
+    'prefix' => config('payment.url_prefix'),
     'namespace' => 'Enzaime\Payment\Http\Controllers\Api'
 ],  function() {
     Route::any('pay', 'PaymentController@pay');

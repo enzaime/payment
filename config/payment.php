@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'url_prefix' => 'api',
     'default' => [
         'gateway' => 'sslcommerz'
     ],
