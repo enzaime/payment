@@ -58,7 +58,7 @@ class PaymentController extends Controller
 
     public function listenIpn(Request $request)
     {
-        EnzPayment::getIpnListener()->listenIpn($request->all(), EnzPayment::getInstance());
+        return EnzPayment::getIpnListener()->listenIpn($request->all(), EnzPayment::getInstance());
     }
 
 }
