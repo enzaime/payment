@@ -12,7 +12,7 @@ use Enzaime\Payment\Exceptions\InvalidPaymentParamException;
 use Illuminate\Queue\InvalidPayloadException;
 use Illuminate\Support\Arr;
 
-class SslCommerz implements PaymentContract, TransactionQueryContract, SslcommerzIpnValidatorContract
+class SslCommerz implements PaymentContract, TransactionQueryContract, SslCommerzIpnValidatorContract
 {
     /**
      * Validate payment .
