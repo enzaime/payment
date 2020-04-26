@@ -26,7 +26,8 @@ return [
 
             'binds' => [
                 'PaymentInfoContract' => '',
-                'PaymentResponseContract' => ''
+                'PaymentResponseContract' => '',
+                'IpnListenerContract' => ''
             ]
         ]
     ]

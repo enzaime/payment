@@ -55,4 +55,10 @@ class PaymentController extends Controller
     {
         return EnzPayment::responseHandler()->cancel($request->all());
     }
+
+    public function listenIpn(Request $request)
+    {
+        EnzPayment::getIpnListener()->listenIpn($request->all(), EnzPayment::getInstance());
+    }
+
 }

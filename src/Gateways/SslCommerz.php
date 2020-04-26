@@ -12,7 +12,7 @@ use Enzaime\Payment\Exceptions\InvalidPaymentParamException;
 use Illuminate\Queue\InvalidPayloadException;
 use Illuminate\Support\Arr;
 
-class SslCommerz implements PaymentContract, TransactionQueryContract
+class SslCommerz implements PaymentContract, TransactionQueryContract, SslcommerzIpnValidatorContract
 {
     /**
      * Validate payment .
@@ -220,5 +220,43 @@ class SslCommerz implements PaymentContract, TransactionQueryContract
     private function getConfigParams()
     {
         return config('payment.gateways.sslcommerz.params');
+    }
+
+    /**
+     * Send the request to get validation response
+     * 
+     * @param string $validationId
+     * @return string|array|mixed
+     */
+    public function validateIpn(string $validationId)
+    {
+        $params =  Arr::only($this->getConfigParams(), ['store_id', 'store_passwd']);
+        $params['val_id'] = $validationId;
+
+        $url = $this->getUrl() . '/validator/api/validationserverAPI.php';
+
+        return json_decode($this->sendRequest($url, $params, 'GET'), true);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return SslCommerzIpnListenerContract
+     */
+    public function getIpnListener(): SslCommerzIpnListenerContract
+    {
+        $className = config('payment.gateways.sslcommerz.binds.IpnListenerContract');
+        
+        return app()->make($className);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return SslCommerz
+     */
+    public function getInstance()
+    {
+        return $this;
     }
 }
