@@ -2,11 +2,11 @@
 
 namespace Enzaime\Payment\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use Enzaime\Payment\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use EnzPayment;
 
-class PaymentController extends Controller
+class PaymentController extends BaseController
 {
     /**
      * Initiate payment
